@@ -319,7 +319,7 @@ section .container {
   font-weight: 500;
   padding: 0;
   line-height: 1px;
-  margin: 0 0 20px 0;
+  margin: 15px 0 15px 0;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #aaaaaa;
@@ -335,7 +335,7 @@ section .container {
 }
 .section-title p {
   margin: 0;
-  margin: -15px 0 15px 0;
+  margin: -15px 0 0 0;
   font-size: 36px;
   font-weight: 700;
   text-transform: uppercase;
@@ -553,6 +553,16 @@ section .container {
   margin-top: -2px;
   border-left: 2px solid rgba(255, 255, 255, 0.2);
   position: relative;
+}
+.categorie-course {
+  line-height: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .resume .resume-item h4 {
   line-height: 18px;
