@@ -903,8 +903,8 @@
     </div>
     <div class="service-item reveal">
       <p class="service-num">04</p>
-      <h3 class="service-name">Paisajismo<br>& Entorno</h3>
-      <p class="service-desc">Integración del jardín, terrazas y accesos como extensiones naturales del espacio habitable, respetando el ecosistema local.</p>
+      <h3 class="service-name">Visualización<br>Arquitectonica</h3>
+      <p class="service-desc">Renders e imágenes 3D que comunican el proyecto antes de construirlo — para presentaciones, permisos y venta.</p>
     </div>
     <div class="service-item reveal reveal-delay-1">
       <p class="service-num">05</p>
@@ -928,10 +928,10 @@
       <p class="bio-label">Acerca de mí</p>
       <h2 class="bio-title">Diseño espacios<br>con <em>propósito</em><br>y memoria</h2>
       <p class="bio-intro">
-        Soy arquitecto con más de 15 años de experiencia en diseño residencial. Mi trabajo nace de la convicción de que una casa debe ser un reflejo auténtico de quien la habita — no una tendencia, sino un hogar duradero construido desde la escucha y el rigor técnico.
+        Soy arquitecto con más de 5 años de experiencia en diseño residencial. Mi trabajo nace de la convicción de que una casa debe ser un reflejo auténtico de quien la habita — no una tendencia, sino un hogar duradero construido desde la escucha y el rigor técnico.
       </p>
       <p class="bio-intro" style="margin-top:16px;">
-        He trabajado en proyectos desde Atacama hasta la Patagonia, aprendiendo que el paisaje chileno exige humildad y precisión en igual medida.
+        Mi enfoque combina el modelado 3D, la automatización de procesos y el uso de tecnologías que optimizan y enriquecen el desarrollo arquitectónico. Me motiva crear soluciones que integren estética, eficiencia y funcionalidad desde las primeras etapas del proyecto.
       </p>
     </div>
 
@@ -973,11 +973,11 @@
     <p class="bio-edu-label">Formación<br>académica</p>
     <div class="edu-timeline">
       <div class="edu-item">
-        <span class="edu-year">2008</span>
+        <span class="edu-year">2020</span>
         <div>
           <h3 class="edu-degree">Arquitecto</h3>
-          <p class="edu-school">Pontificia Universidad Católica de Chile</p>
-          <p class="edu-desc">Título profesional con distinción máxima. Tesis sobre arquitectura vernácula en zonas sísmicas del centro-sur de Chile.</p>
+          <p class="edu-school">Universidad Andres Bello</p>
+          <!--  <p class="edu-desc">Título profesional con distinción máxima. Tesis sobre arquitectura vernácula en zonas sísmicas del centro-sur de Chile.</p> 
         </div>
       </div>
       <div class="edu-item">
@@ -1001,7 +1001,7 @@
         <div>
           <h3 class="edu-degree">Docente Adjunto</h3>
           <p class="edu-school">Escuela de Arquitectura · USACH</p>
-          <p class="edu-desc">Taller de Proyecto III — Diseño residencial en contextos rurales y periurbanos. Formación de nuevas generaciones de arquitectos chilenos.</p>
+          <p class="edu-desc">Taller de Proyecto III — Diseño residencial en contextos rurales y periurbanos. Formación de nuevas generaciones de arquitectos chilenos.</p>  -->
         </div>
       </div>
     </div>
@@ -1014,35 +1014,38 @@
   <div class="reveal">
     <h2 class="contact-title">Hablemos<br>de tu <em>próximo<br>hogar</em></h2>
   </div>
-  <div class="contact-form reveal reveal-delay-1">
+  <form class="contact-form reveal reveal-delay-1" id="contactForm">
     <div class="contact-field">
       <label>Tu nombre</label>
-      <input type="text" placeholder="Claudia Martínez" />
+      <input type="text" name="nombre" placeholder="Claudia Martínez" />
     </div>
     <div class="contact-field">
       <label>Correo electrónico</label>
-      <input type="email" placeholder="hola@ejemplo.cl" />
+      <input type="email" name="email" placeholder="hola@ejemplo.cl" />
     </div>
     <div class="contact-field">
       <label>Tipo de proyecto</label>
-      <input type="text" placeholder="Casa nueva / Remodelación / Asesoría" />
+      <input type="text" name="tipo" placeholder="Casa nueva / Remodelación / Asesoría" />
     </div>
     <div class="contact-field">
       <label>Cuéntanos tu idea</label>
-      <textarea placeholder="Describe brevemente tu proyecto, ubicación y presupuesto aproximado..."></textarea>
+      <textarea name="mensaje" placeholder="Describe brevemente tu proyecto, ubicación y presupuesto aproximado..."></textarea>
     </div>
     <button class="contact-submit">Enviar mensaje →</button>
-  </div>
+    <p id="formSuccess" style="display:none; margin-top:16px; font-size:13px; letter-spacing:0.15em; text-transform:uppercase; color:var(--sand);">Mensaje enviado — te contactaré pronto.</p>
+  </form>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-logo">Forma</span>
-  <span class="footer-copy">© 2025 Forma Arquitectura · Santiago, Chile</span>
+  <span class="footer-logo">Ian Hernandez</span>
+  <span class="footer-copy">Ian Hernandez Arquitecto · La Calera, Chile</span>
   <ul class="footer-links">
+    <li><a href="https://www.linkedin.com/in/ian-hernandez/">LinkedIn</a></li>
+    <!-- 
     <li><a href="#">Instagram</a></li>
     <li><a href="#">Behance</a></li>
-    <li><a href="#">LinkedIn</a></li>
+    -->
   </ul>
 </footer>
 
@@ -1123,6 +1126,21 @@
     nav.classList.add('scrolled');
   } else {
     nav.classList.remove('scrolled');
+  }
+  });
+
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  const response = await fetch('https://formspree.io/f/xpzbedvl', {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+  if (response.ok) {
+    form.reset();
+    document.getElementById('formSuccess').style.display = 'block';
   }
   });
 </script>
